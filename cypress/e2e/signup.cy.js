@@ -1,8 +1,6 @@
 // signup.cy.js
 import Signup from "./signup";
 
-
-
 describe('Signup', () => {
   const signup = new Signup();
 
