@@ -1,5 +1,5 @@
 
-class Signup {
+export class Signup {
     clickForRegister = '.shop-menu > .nav > :nth-child(4) > a';
     signupName = '[data-qa="signup-name"]';
     signupEmail = '[data-qa="signup-email"]';
@@ -20,6 +20,21 @@ class Signup {
     zipcodeInput = '[data-qa="zipcode"]';
     mobileNumberInput = '[data-qa="mobile_number"]';
     createAccountButton = '[data-qa="create-account"]';
+    signupSelector = '.nav > :nth-child(1) > a'
+    emailalreadyexistSelector = '.signup-form > form > p'
+    accountcreatedSelector = 'b'
+    accountDeletedSelector = 'b'
+
+
+    checkemailalreadyexistVisibility(){
+      cy.get(this.emailalreadyexistSelector).should('be.visible');
+
+    }
+
+    checksignupVisibility (){
+        cy.get(this.signupSelector).should('be.visible');
+
+    }
   
     visitWebsite() {
       cy.visit("https://www.automationexercise.com/");
@@ -29,12 +44,12 @@ class Signup {
       cy.get(this.clickForRegister).click();
     }
   
-    entersignupname(name) {
-      cy.get(this.signupName).type(name);
+    entersignupname(fullname) {
+      cy.get(this.signupName).type(fullname);
     }
   
-    entersignupemail(email) {
-      cy.get(this.signupEmail).type(email);
+    entersignupemail(exampleEmail) {
+      cy.get(this.signupEmail).type(exampleEmail);
     }
   
     clicksignupbutton() {
@@ -45,8 +60,8 @@ class Signup {
       cy.get(this.selectGender).click();
     }
   
-    enterpassword(password) {
-      cy.get(this.passwordInput).type(password);
+    enterpassword(pass) {
+      cy.get(this.passwordInput).type(pass);
     }
   
     selectday() {
@@ -61,12 +76,12 @@ class Signup {
       return cy.get(this.selectYear);
     }
   
-    enterFirstName(fname) {
-      cy.get(this.firstNameInput).type(fname);
+    enterFirstName(firstname) {
+      cy.get(this.firstNameInput).type(firstname);
     }
   
-    enterLastName(lname) {
-      cy.get(this.lastNameInput).type(lname);
+    enterLastName(lastname) {
+      cy.get(this.lastNameInput).type(lastname);
     }
   
     enterCompanyname(company) {
@@ -104,7 +119,14 @@ class Signup {
     hitCreateAccountButton() {
       cy.get(this.createAccountButton).click();
     }
+    visibilityAccountDeletedSelector(){
+      cy.get(this.accountDeletedSelector).should('be.visible')
+    }
+    VisibilityaccountcreatedSelector(){
+      cy.get(this.accountcreatedSelector).should('be.visible')
+
+    }
   }
   
-  export default Signup;
+ 
   
